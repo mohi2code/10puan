@@ -10,12 +10,12 @@ public class UIController : MonoBehaviour
 
     void Start()
     {
-        text.text = "+" + PlayerController.score;
+        text.text = "Score: " + PlayerController.score;
     }
 
     // Update is called once per frame
     void Update()
     {
-        text.text = "+" + PlayerController.score;
+        text.text = "Score: " + PlayerController.score;
     }
 }

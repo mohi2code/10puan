@@ -11,9 +11,19 @@ public class ManagerButtons : MonoBehaviour
       SceneManager.LoadScene("DesignTest");
     }
 
+    public void Level2()
+    {
+      SceneManager.LoadScene("DesignTest2");
+    }
+
     
    public void AppQuit()
    {
      Application.Quit();
    }
+
+   public void RestartScene()
+   {
+    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+  }
 }

@@ -49,6 +49,7 @@ public class BoxController : MonoBehaviour
         if(other.tag == "Coin" && transform.parent.tag == "Player")
         {
             PlayerController.score += 1;
+            character.transform.parent.gameObject.GetComponent<CoinCollect>().PlayCoinCollectSound();
             Destroy(other.gameObject);
         }
 
@@ -61,6 +62,7 @@ public class BoxController : MonoBehaviour
         {
             Debug.Log("Congrats");
             PlayerMovement.isMoving = false;
+
 
             if(PlayerController.score >= 2)
             {

@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Coin")
         {
             score += 1;
+            GetComponent<CoinCollect>().PlayCoinCollectSound();
             Destroy(other.gameObject);
         }
     }
