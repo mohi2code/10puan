@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class BoxController : MonoBehaviour
 {   
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Box" && transform.parent.tag == "Player")
@@ -54,6 +53,15 @@ public class BoxController : MonoBehaviour
         {
             Debug.Log("Congrats");
             PlayerMovement.isMoving = false;
+
+            if(PlayerController.score >= 2)
+            {
+               Debug.Log("you win");
+            }
+            else
+            {
+                Debug.Log("you lose");
+            }
         }
     }
 }
