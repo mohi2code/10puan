@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 public class ManagerButtons : MonoBehaviour
 {
    
-    private void StartButton()
+  public void StartButton()
     {
-        SceneManager.LoadScene("GameLevel");
+        SceneManager.LoadScene("DesignTest");
     }
 
     
-   private void AppQuit()
+   public void AppQuit()
    {
      Application.Quit();
    }
