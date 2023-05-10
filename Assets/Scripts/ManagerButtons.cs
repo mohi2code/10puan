@@ -8,7 +8,7 @@ public class ManagerButtons : MonoBehaviour
    
   public void StartButton()
     {
-        SceneManager.LoadScene("DesignTest");
+      SceneManager.LoadScene("DesignTest");
     }
 
     

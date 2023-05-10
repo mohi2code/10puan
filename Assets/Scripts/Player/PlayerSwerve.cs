@@ -15,7 +15,7 @@ public class PlayerSwerve : MonoBehaviour
 
     private void Update()
     {
-        if (FindObjectOfType<PlayerMovement>().isMoving)
+        if (PlayerMovement.isMoving)
         {
             float swerveAmount = Time.deltaTime * swerveSpeed * _swerveInputSystem.MoveFactorX;
             swerveAmount = Mathf.Clamp(swerveAmount, -maxSwerveAmount, maxSwerveAmount);

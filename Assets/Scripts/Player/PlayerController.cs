@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -44,7 +45,8 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Obstacle")
         {
             transform.GetChild(1).parent = transform.parent;
-            playerMovement.isMoving = false;
+            PlayerMovement.isMoving = false;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

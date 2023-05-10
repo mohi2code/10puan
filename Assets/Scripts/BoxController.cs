@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BoxController : MonoBehaviour
-{
+{   
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Box" && transform.parent.tag == "Player")
@@ -36,9 +38,16 @@ public class BoxController : MonoBehaviour
             Destroy(other.gameObject);
         }
 
+
         if (other.tag == "Obstacle")
         {
             transform.parent = transform.parent.parent;
+        }
+
+        if (other.CompareTag("End"))
+        {
+            Debug.Log("Congrats");
+            PlayerMovement.isMoving = false;
         }
     }
 }
