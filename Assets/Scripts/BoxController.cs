@@ -4,7 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class BoxController : MonoBehaviour
-{   
+{
+
+    public GameObject character;
+
+    private void Start()
+    {
+        character = GameObject.FindGameObjectWithTag("PlayerChar");
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Box" && transform.parent.tag == "Player")
@@ -57,10 +65,12 @@ public class BoxController : MonoBehaviour
             if(PlayerController.score >= 2)
             {
                Debug.Log("you win");
+               CharAnimationControl.WinAnimation();
             }
             else
             {
                 Debug.Log("you lose");
+                CharAnimationControl.LoseAnimation();
             }
         }
     }
