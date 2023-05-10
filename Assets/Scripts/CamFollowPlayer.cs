@@ -8,6 +8,7 @@ public class CamFollowPlayer : MonoBehaviour
     public float sSpeed = 10f;
     public Vector3 dist;
     public Transform lookTarget;
+    
     private void LateUpdate()
     {
       Vector3 dPos = cameraTarget.position + dist;
