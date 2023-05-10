@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         playerMovement = gameObject.GetComponent<PlayerMovement>();
+        PlayerMovement.isMoving = true;
     }
 
     private void OnTriggerEnter(Collider other)
