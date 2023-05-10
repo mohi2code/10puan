@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float forwardSpeed = 10f;
     public float sideSpeed = 10f;
-    public bool isMoving = true;
+    public static bool isMoving = true;
     public float leftBound;
     public float rightBound;
 
