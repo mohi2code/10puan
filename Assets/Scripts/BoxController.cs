@@ -24,15 +24,22 @@ public class BoxController : MonoBehaviour
                 otherTransform.GetComponent<Rigidbody>().useGravity = true;
 
                 // Determine if the parent object is tagged as "Player"
-                Transform parentTransform = transform.tag == "Player" ? transform : transform.parent;
+                Transform parentTransform = transform.parent;
 
                 // Add the cube underneath the parent object
                 GameObject childCube = Instantiate(otherTransform.gameObject, parentTransform.position, Quaternion.identity, parentTransform);
+                childCube.transform.parent = transform;
                 parentTransform.position = new Vector3(parentTransform.position.x, parentTransform.position.y + 1, parentTransform.position.z);
-                childCube.transform.position = new Vector3(transform.position.x, 1, transform.position.z);
+                childCube.transform.position = new Vector3(parentTransform.position.x, 1, parentTransform.position.z);
 
             }
 
+            Destroy(other.gameObject);
+        }
+
+        if(other.tag == "Coin" && transform.parent.tag == "Player")
+        {
+            PlayerController.score += 1;
             Destroy(other.gameObject);
         }
 

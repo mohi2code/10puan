@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 
     private PlayerMovement playerMovement;
+    public static int score = 0;
 
     private void Start()
     {
@@ -45,6 +46,12 @@ public class PlayerController : MonoBehaviour
         {
             transform.GetChild(1).parent = transform.parent;
             playerMovement.isMoving = false;
+        }
+
+        if (other.tag == "Coin")
+        {
+            score += 1;
+            Destroy(other.gameObject);
         }
     }
 }
