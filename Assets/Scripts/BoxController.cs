@@ -1,5 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using HmsPlugin;
+using HuaweiMobileServices.Base;
+using HuaweiMobileServices.Ads;
+using HuaweiMobileServices.IAP;
+using HuaweiMobileServices.Utils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -48,6 +53,12 @@ public class BoxController : MonoBehaviour
 
         if(other.tag == "Coin" && transform.parent.tag == "Player")
         {
+
+            if(PlayerController.score == 1)
+            {
+                PurchaseProduct("coin100");
+            }
+
             PlayerController.score += 1;
             character.transform.parent.gameObject.GetComponent<CoinCollect>().PlayCoinCollectSound();
             Destroy(other.gameObject);
@@ -60,20 +71,39 @@ public class BoxController : MonoBehaviour
 
         if (other.CompareTag("End"))
         {
+            HMSAdsKitManager.Instance.ShowInterstitialAd();
+
             Debug.Log("Congrats");
             PlayerMovement.isMoving = false;
 
 
             if(PlayerController.score >= 2)
             {
-               Debug.Log("you win");
-               CharAnimationControl.WinAnimation();
+                Debug.Log("you win");
+                CharAnimationControl.WinAnimation();
+                HMSAdsKitManager.Instance.OnRewarded = OnRewarded;
+                HMSAdsKitManager.Instance.ShowRewardedAd();
             }
             else
             {
                 Debug.Log("you lose");
                 CharAnimationControl.LoseAnimation();
+                HMSIAPManager.Instance.PurchaseProduct("coin100");
+                PurchaseProduct("removeAds");
             }
         }
     }
+
+    public void OnRewarded(Reward reward)
+    {
+        PlayerController.score += 10;
+    }
+
+    public void PurchaseProduct(string productID)
+    {
+        Debug.Log($"PurchaseProduct");
+
+        HMSIAPManager.Instance.PurchaseProduct(productID);
+    }
+
 }
